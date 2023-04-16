@@ -1,6 +1,6 @@
 import pygame
-from pygame.sprite import Sprite
 
+from pygame.sprite import Sprite
 from dino_runner.utils.constants import RUNNING, JUMPING, DUCKING
 
 pygame.init()
@@ -15,6 +15,7 @@ class Dinosaur(Sprite):
     def __init__(self):
         self.image = RUNNING[0]
         self.dino_rect = self.image.get_rect()
+        self.mask = pygame.mask.from_surface(self.image)
         self.dino_rect.x = 80
         self.dino_rect.y = 310
         self.step_index = 0
