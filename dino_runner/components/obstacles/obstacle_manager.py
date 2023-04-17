@@ -13,7 +13,7 @@ class ObstacleManager:
 
     def update(self, game):
         if len(self.obstacles) == 0:
-            random_obstacle = random.randint(0, 2)
+            random_obstacle = random.randint(0, 2)    
 
             if random_obstacle == 0:
                 self.obstacles.append(Cactus(SMALL_CACTUS))
@@ -21,13 +21,21 @@ class ObstacleManager:
                 self.obstacles.append(Large_Cactus(LARGE_CACTUS))
             elif random_obstacle == 2:
                 self.obstacles.append(Bird(BIRD))
+
+        # dino_hitbox = pygame.sprite.GroupSingle(game.player)
+        # obstacle_hitbox = pygame.sprite.GroupSingle(self.obstacles)
                     
         for obstacle in self.obstacles:
             obstacle.update(game.game_speed, self.obstacles)
 
+            # if pygame.sprite.spritecollide(dino_hitbox.sprite, obstacle_hitbox,False, pygame.sprite.collide_mask):
+            #     pygame.time.delay(500)
+            #     game.playing = False
+            #     break 
+
             if game.player.mask.overlap(obstacle.mask, 
-                (obstacle.rect[0] - game.player.dino_rect.x, 
-                 obstacle.rect[1] - game.player.dino_rect.y)):
+                (obstacle.rect.x - game.player.dino_rect.x, 
+                obstacle.rect.y - game.player.dino_rect.y)):
                 pygame.time.delay(500)
                 game.playing = False
                 break  
