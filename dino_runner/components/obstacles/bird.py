@@ -7,12 +7,14 @@ class Bird(Obstacle):
     def __init__(self, image):
         self.type = 0
         super().__init__(image, self.type)
-        self.rect.y = random.randint(240,320)
-        self.is_moving = random.randint(0,3)
+        self.rect.y = 320
+        if random.random() <= 0.7:
+            self.rect.y = 270
+        self.is_moving = random.random()
         self.up_n_down = False
     
     def update(self,game_speed, obstacles):
-        if self.is_moving == 0:
+        if self.is_moving <= 0.25:
             if not self.up_n_down:
                 self.rect.y +=7
                 if self.rect.y > 320:
