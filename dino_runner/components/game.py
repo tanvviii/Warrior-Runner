@@ -1,7 +1,7 @@
 import pygame
 import time
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, FONT_STYLE, DEFAULT_TYPE
+from dino_runner.utils.constants import *
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.components.power_ups.power_manager import PowerUpManager
@@ -18,7 +18,7 @@ class Game:
         self.running = False
         self.game_speed = 20
         self.score = 0
-        self.death_count = 0
+        self.lifes_left = 3
         self.x_pos_bg = 0
         self.y_pos_bg = 380
         self.player = Dinosaur()
@@ -27,6 +27,8 @@ class Game:
 
     def execute(self):
         self.running = True
+        # LOOP_MENU.set_volume(0.4)
+        # LOOP_MENU.play(-1)
         while self.running:
             if not self.playing:
                 self.show_menu()
@@ -38,6 +40,9 @@ class Game:
         self.playing = True
         self.obstacle_manager.reset_obstacles()
         self.power_up_manager.reset_power_ups()
+        # LOOP_MENU.stop()
+        # LOOP_GAME.set_volume(0.4)
+        # LOOP_GAME.play()
         self.reset()
         while self.playing:
             self.events()
@@ -45,6 +50,7 @@ class Game:
             self.draw()
 
     def reset(self):
+        self.lifes_left = 3
         self.game_speed = 20
         self.score = 0
 
@@ -78,19 +84,30 @@ class Game:
             f"Score: {self.score}", 22,
             (1000, 50), (0,0,0)
             )
+    
+    def hearts_left(self):
+        self.draw_text(
+                f"Hearts Left: {self.lifes_left}", 22, 
+                (1000, 80), (195,0,0)
+                )
         
     def draw_power_up_time(self):
         if self.player.has_power_ups:
-            time_to_show = round((self.player.power_up_time - pygame.time.get_ticks()) / 1000, 2)
-
-            if time_to_show >= 0:
-                self.draw_text(
-                    f"{self.player.type.capitalize()} for {time_to_show} seconds", 22,
-                    (500, 40), (0,0,0)
-                )
-            else:
+            if self.player.extra_life:
                 self.player.has_power_ups = False
                 self.player.type = DEFAULT_TYPE
+                self.player.extra_life = False
+            else:
+                time_to_show = round((self.player.power_up_time - pygame.time.get_ticks()) / 1000, 2)
+
+                if time_to_show >= 0:
+                    self.draw_text(
+                        f"{self.player.type.capitalize()} for {time_to_show} seconds", 22,
+                        (500, 40), (0,0,0)
+                    )
+                else:
+                    self.player.has_power_ups = False
+                    self.player.type = DEFAULT_TYPE
 
     def draw(self):
         self.clock.tick(FPS)
@@ -99,6 +116,7 @@ class Game:
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
         self.draw_score()
+        self.hearts_left()
         self.draw_power_up_time()
         self.power_up_manager.draw(self.screen)
         pygame.display.update()
@@ -113,6 +131,9 @@ class Game:
             self.x_pos_bg = 0
         self.x_pos_bg -= self.game_speed
 
+    def draw_parallax(self):
+        pass
+
     def handle_events_on_menu(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -126,20 +147,17 @@ class Game:
         half_screen_height = SCREEN_HEIGHT // 2
         half_screen_width = SCREEN_WIDTH // 2
 
-        if self.death_count == 0:
+        if self.lifes_left == 3:
             self.draw_text(
                 "Press any key to start", 22,
                 (half_screen_width, half_screen_height), (0,0,0)
                 )
-        else:
+        elif self.lifes_left == 0:
+            # LOOP_GAME.stop()
             self.screen.blit(ICON, (half_screen_width - 45, half_screen_height - 140))    
             self.draw_text(
                 "Press any key to Restart", 22,
                 (half_screen_width, half_screen_height), (0,0,0)
-                )
-            self.draw_text(
-                f"Deaths: {self.death_count}", 22, 
-                (half_screen_width, half_screen_height + 60), (195,0,0)
                 )
             self.draw_text(
                 f"Score: {self.score + 1}", 22,
