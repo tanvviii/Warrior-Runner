@@ -1,8 +1,10 @@
 import pygame
+import time
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, FONT_STYLE
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, FONT_STYLE, DEFAULT_TYPE
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
+from dino_runner.components.power_ups.power_manager import PowerUpManager
 
 
 class Game:
@@ -21,6 +23,7 @@ class Game:
         self.y_pos_bg = 380
         self.player = Dinosaur()
         self.obstacle_manager = ObstacleManager()
+        self.power_up_manager = PowerUpManager()
 
     def execute(self):
         self.running = True
@@ -34,6 +37,8 @@ class Game:
     def run(self):
         self.playing = True
         self.obstacle_manager.reset_obstacles()
+        self.power_up_manager.reset_power_ups()
+        self.reset()
         while self.playing:
             self.events()
             self.update()
@@ -54,6 +59,7 @@ class Game:
         self.player.update(user_input)
         self.obstacle_manager.update(self)
         self.update_score()
+        self.power_up_manager.update(self)
 
     def update_score(self):
         self.score += 1
@@ -72,6 +78,19 @@ class Game:
             f"Score: {self.score}", 22,
             (1000, 50), (0,0,0)
             )
+        
+    def draw_power_up_time(self):
+        if self.player.has_power_ups:
+            time_to_show = round((self.player.power_up_time - pygame.time.get_ticks()) / 1000, 2)
+
+            if time_to_show >= 0:
+                self.draw_text(
+                    f"{self.player.type.capitalize()} for {time_to_show} seconds", 22,
+                    (500, 40), (0,0,0)
+                )
+            else:
+                self.player.has_power_ups = False
+                self.player.type = DEFAULT_TYPE
 
     def draw(self):
         self.clock.tick(FPS)
@@ -80,6 +99,8 @@ class Game:
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
         self.draw_score()
+        self.draw_power_up_time()
+        self.power_up_manager.draw(self.screen)
         pygame.display.update()
         pygame.display.flip()
 
@@ -98,7 +119,6 @@ class Game:
                 self.playing = False
                 self.running = False
             elif event.type == pygame.KEYDOWN:
-                self.reset()
                 self.run()
 
     def show_menu(self):
@@ -119,10 +139,10 @@ class Game:
                 )
             self.draw_text(
                 f"Deaths: {self.death_count}", 22, 
-                (half_screen_width, 80), (195,0,0)
+                (half_screen_width, half_screen_height + 60), (195,0,0)
                 )
             self.draw_text(
-                f"Score: {self.score}", 22,
+                f"Score: {self.score + 1}", 22,
                 (half_screen_width, half_screen_height + 40), (0,0,0)
                 )
 

@@ -25,10 +25,13 @@ class ObstacleManager:
             if game.player.mask.overlap(obstacle.mask,
                 (obstacle.rect.x - game.player.dino_rect.x, 
                  obstacle.rect.y - game.player.dino_rect.y)):
-                pygame.time.delay(500)
-                game.playing = False
-                game.death_count += 1
-                break  
+                if not game.player.has_power_ups:
+                    pygame.time.delay(500)
+                    game.playing = False
+                    game.death_count += 1
+                    break
+                else:
+                    self.obstacles.remove(obstacle)
 
     def reset_obstacles(self):
         self.obstacles = []
