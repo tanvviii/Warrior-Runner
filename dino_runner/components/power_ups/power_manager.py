@@ -2,9 +2,9 @@ import random
 import pygame
 
 from dino_runner.components.power_ups.shield import Shield
-from dino_runner.components.power_ups.hammer import Hammer
+from dino_runner.components.power_ups.sword import Sword
 from dino_runner.components.power_ups.extra_life import ExtraLife
-from dino_runner.utils.constants import DEFAULT_TYPE
+from dino_runner.utils.constants import *
 
 
 class PowerUpManager:
@@ -19,7 +19,7 @@ class PowerUpManager:
             if random_power_up == 0:
                 self.power_ups.append(Shield())
             elif random_power_up == 1:
-                self.power_ups.append(Hammer())
+                self.power_ups.append(Sword())
 
     def generate_extra_life(self, score):
         if len(self.power_ups) == 0 and self.when_appears == score:
@@ -27,7 +27,9 @@ class PowerUpManager:
             self.power_ups.append(ExtraLife())
                 
     def update(self, game):
-        if random.randint(0,2) == 0 and game.lifes_left < 3:
+        heart_choose_to_appear = random.randint(0,9)
+
+        if heart_choose_to_appear == 0 and game.lifes_left < 3:
             self.generate_extra_life(game.score)
         else:
           self.generate_power_up(game.score)
@@ -39,6 +41,8 @@ class PowerUpManager:
                 (power_up.rect.x - game.player.dino_rect.x, 
                  power_up.rect.y - game.player.dino_rect.y)):
                 if game.player.type == DEFAULT_TYPE and isinstance(power_up, ExtraLife):
+                    LIFE_UP.set_volume(0.3)
+                    LIFE_UP.play()
                     game.player.extra_life = True
                     game.lifes_left += 1
                 power_up.start_time = pygame.time.get_ticks()
