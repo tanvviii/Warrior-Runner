@@ -13,8 +13,6 @@ class Game:
         pygame.display.set_caption(TITLE)
         pygame.display.set_icon(GAME_WALLPAPER)
 
-        self.parallax_speeds = [1, 0.075, 0.15, 0.3, 0.6]
-
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.clock = pygame.time.Clock()
         self.playing = False
@@ -29,7 +27,6 @@ class Game:
         self.heart_vec = [HEARTS[0]] * 3
 
         self.x_pos_bg = [0, 0, 0, 0, 0]
-
         self.y_pos_bg = 380
 
         self.player = Warrior()
@@ -145,17 +142,16 @@ class Game:
         pygame.display.flip()
 
     def draw_floor(self):
-        self.parallax(BG, 0, 12)
+        self.parallax(BG, 0, 1, 12)
 
     def draw_background(self):
-        self.parallax(PLX_1, 1, -50)
-        self.parallax(PLX_2, 2, -50)
-        self.parallax(PLX_3, 3, -50)
-        self.parallax(PLX_4, 4, -50)
+        self.parallax(PLX_1, 1, 0.075, -50)
+        self.parallax(PLX_2, 2, 0.15, -50)
+        self.parallax(PLX_3, 3, 0.3, -50)
+        self.parallax(PLX_4, 4, 0.6,-50)
 
-    def parallax(self, image, speed_index, y_pos=0):
-        speed = self.parallax_speeds[speed_index]
-        x_pos = self.x_pos_bg[speed_index]
+    def parallax(self, image, bg_index, speed, y_pos=0):
+        x_pos = self.x_pos_bg[bg_index]
         image_width = image.get_width()
         self.screen.blit(image, (x_pos, y_pos))
         self.screen.blit(image, (image_width + x_pos, y_pos))
@@ -163,7 +159,7 @@ class Game:
             self.screen.blit(image, (image_width + x_pos, y_pos))
             x_pos = 0
         x_pos -= self.game_speed * speed
-        self.x_pos_bg[speed_index] = x_pos
+        self.x_pos_bg[bg_index] = x_pos
 
     def handle_events_on_menu(self):
         for event in pygame.event.get():
