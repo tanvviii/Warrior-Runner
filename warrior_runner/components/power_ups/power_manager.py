@@ -1,0 +1,62 @@
+import random
+import pygame
+
+from warrior_runner.components.power_ups.shield import Shield
+from warrior_runner.components.power_ups.sword import Sword
+from warrior_runner.components.power_ups.extra_life import ExtraLife
+from warrior_runner.utils.constants import *
+
+
+class PowerUpManager:
+    def __init__(self):
+        self.power_ups = []
+        self.when_appears = 0
+
+    def generate_power_up(self, score):
+        if len(self.power_ups) == 0 and self.when_appears == score:
+            random_power_up = random.randint(0,1)
+            self.when_appears += random.randint(200, 300)
+            if random_power_up == 0:
+                self.power_ups.append(Shield())
+            elif random_power_up == 1:
+                self.power_ups.append(Sword())
+
+    def generate_extra_life(self, score):
+        if len(self.power_ups) == 0 and self.when_appears == score:
+            self.when_appears += random.randint(200, 300)
+            self.power_ups.append(ExtraLife())
+                
+    def update(self, game):
+        heart_choose_to_appear = random.randint(0,9)
+
+        if heart_choose_to_appear == 0 and game.lives_left < 3:
+            self.generate_extra_life(game.score)
+        else:
+          self.generate_power_up(game.score)
+
+        for power_up in self.power_ups:
+            power_up.update(game.game_speed, self.power_ups)
+
+            if game.player.mask.overlap(power_up.mask,
+                (power_up.rect.x - game.player.warrior_rect.x, 
+                 power_up.rect.y - game.player.warrior_rect.y)):
+                if game.player.type == DEFAULT_TYPE and isinstance(power_up, ExtraLife):
+                    LIFE_UP.set_volume(0.3)
+                    LIFE_UP.play()
+                    game.player.extra_life = True
+                    game.lives_left += 1
+                power_up.start_time = pygame.time.get_ticks()
+                # game.player.shield = True
+                game.player.has_power_ups = True
+                game.player.type = power_up.type
+                game.player.power_up_time = power_up.start_time + (power_up.duration * 1000)
+
+                self.power_ups.remove(power_up)
+
+    def draw(self, screen):
+        for power_up in self.power_ups:
+            power_up.draw(screen)
+
+    def reset_power_ups(self):
+        self.power_ups = []
+        self.when_appears = random.randint(200, 300)
