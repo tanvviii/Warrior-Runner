@@ -4,6 +4,49 @@
 
 Warrior Runner offers a more dynamic and visually engaging experience compared to Tetris. While Tetris is a timeless puzzle game focused on logic and spatial reasoning, Warrior Runner features action-packed gameplay with animated characters, enemy interactions, and real-time controls. It allows players to actively control a character, making it feel more immersive. For game developers, Warrior Runner is a better learning tool as it involves working with animations, collisions, sound, and modular code — offering more creative possibilities and expansion potential than the simpler mechanics of Tetris.
 
+___
+## *Project Modeling in Warrior-Runner*
+
+Based on the GitHub repository shared (Warrior-Runner), here’s how things appear to be modeled in this 2D endless runner game:
+
+### Core Game Elements
+
+#### *Player Character*
+•⁠  ⁠Modeled as a warrior with running, jumping, and attacking animations.
+•⁠  ⁠Likely implemented as a sprite with physics properties (rigidbody, colliders).
+
+#### *Obstacles/Enemies*
+•⁠  ⁠Various obstacles that the player must jump over or attack.
+•⁠  ⁠Probably implemented as prefabs with colliders for interaction detection.
+
+#### *Environment*
+•⁠  ⁠Parallax scrolling background layers.
+•⁠  ⁠Ground segments that generate procedurally as the player runs.
+
+---
+
+### Technical Modeling
+
+#### *Game States*
+•⁠  ⁠Menu state.
+•⁠  ⁠Playing state.
+•⁠  ⁠Game over state.
+•⁠  ⁠Pause state.
+
+#### *Movement System*
+•⁠  ⁠Player movement (running forward automatically).
+•⁠  ⁠Jump mechanics (likely using Unity's physics system).
+•⁠  ⁠Attack animations and hit detection.
+
+#### *Scoring/Progress*
+•⁠  ⁠Distance-based scoring.
+•⁠  ⁠Possibly coin/collectible system.
+
+#### *Object Pooling*
+•⁠  ⁠For efficient obstacle/enemy generation and recycling.
+
+___
+
 ### *Key Challenges in Warrior Runner* : 
 
 1. *Increasing Speed Over Time*
@@ -213,7 +256,6 @@ The design focuses on *O(1) access* for critical operations (e.g., player input)
 
 ## 📊 Sample Gameplay Screenshots
 
-
 ### 🧩 Initial Game Grid
 
 
@@ -252,6 +294,184 @@ The design focuses on *O(1) access* for critical operations (e.g., player input)
 
 ## 📌 Summary
 
+
+---
+## *Future Work Suggestions for Warrior-Runner*
+
+
+
+Based on the project's current state, here are several directions for future development:
+
+
+
+---
+
+
+
+### Gameplay Enhancements
+
+
+
+#### *New Character Abilities*
+
+•⁠  ⁠Double jumps or dash moves
+
+•⁠  ⁠Special attacks with cooldowns
+
+•⁠  ⁠Character classes with unique skills
+
+
+
+#### *Expanded Obstacle System*
+
+•⁠  ⁠Moving/platform obstacles
+
+•⁠  ⁠Environmental hazards (fire, spikes, etc.)
+
+•⁠  ⁠Boss encounters at milestones
+
+
+
+#### *Progression System*
+
+•⁠  ⁠Character upgrades/unlockables
+
+•⁠  ⁠Skill trees or ability progression
+
+•⁠  ⁠Daily/weekly challenges
+
+
+
+---
+
+
+
+### Technical Improvements
+
+
+
+#### *Performance Optimization*
+
+•⁠  ⁠Enhanced object pooling
+
+•⁠  ⁠Background loading/unloading
+
+•⁠  ⁠Improved asset management
+
+
+
+#### *Advanced Visuals*
+
+•⁠  ⁠Dynamic lighting effects
+
+•⁠  ⁠Weather/day-night cycles
+
+•⁠  ⁠More detailed animations
+
+
+
+#### *AI Enhancements*
+
+•⁠  ⁠Smarter enemy behaviors
+
+•⁠  ⁠Adaptive difficulty scaling
+
+•⁠  ⁠Procedural obstacle generation
+
+
+
+---
+
+
+
+### Content Expansion
+
+
+
+#### *New Environments*
+
+•⁠  ⁠Different thematic worlds (desert, ice, forest)
+
+•⁠  ⁠Interactive background elements
+
+
+
+#### *Multiplayer Features*
+
+•⁠  ⁠Local co-op mode
+
+•⁠  ⁠Online leaderboards
+
+•⁠  ⁠Ghost runs (compete against others' best times)
+
+
+
+#### *Meta Game Systems*
+
+•⁠  ⁠Achievements system
+
+•⁠  ⁠Cosmetic unlocks
+
+•⁠  ⁠Story elements/narrative progression
+
+---
+## *Future Work Suggestions for Warrior-Runner*
+
+Based on the project's current state, here are several directions for future development:
+
+### Gameplay Enhancements
+
+#### *New Character Abilities*
+•⁠  ⁠Double jumps or dash moves
+•⁠  ⁠Special attacks with cooldowns
+•⁠  ⁠Character classes with unique skills
+
+#### *Expanded Obstacle System*
+•⁠  ⁠Moving/platform obstacles
+•⁠  ⁠Environmental hazards (fire, spikes, etc.)
+•⁠  ⁠Boss encounters at milestones
+
+#### *Progression System*
+•⁠  ⁠Character upgrades/unlockables
+•⁠  ⁠Skill trees or ability progression
+•⁠  ⁠Daily/weekly challenges
+
+---
+
+### Technical Improvements
+
+#### *Performance Optimization*
+•⁠  ⁠Enhanced object pooling
+•⁠  ⁠Background loading/unloading
+•⁠  ⁠Improved asset management
+
+#### *Advanced Visuals*
+•⁠  ⁠Dynamic lighting effects
+•⁠  ⁠Weather/day-night cycles
+•⁠  ⁠More detailed animations
+
+#### *AI Enhancements*
+•⁠  ⁠Smarter enemy behaviors
+•⁠  ⁠Adaptive difficulty scaling
+•⁠  ⁠Procedural obstacle generation
+
+---
+
+### Content Expansion
+
+#### *New Environments*
+•⁠  ⁠Different thematic worlds (desert, ice, forest)
+•⁠  ⁠Interactive background elements
+
+#### *Multiplayer Features*
+•⁠  ⁠Local co-op mode
+•⁠  ⁠Online leaderboards
+•⁠  ⁠Ghost runs (compete against others' best times)
+
+#### *Meta Game Systems*
+•⁠  ⁠Achievements system
+•⁠  ⁠Cosmetic unlocks
+•⁠  ⁠Story elements/narrative progression
 
 ---
 
