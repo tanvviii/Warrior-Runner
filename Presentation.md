@@ -1,32 +1,32 @@
-# Warrior-Runner Game in C++ - Terminal Based
+# Warrior-Runner Game in Python - Terminal Based
 
 ## Why is implementing Warrior Runner harder than implementing Tetris?
 
 Warrior Runner offers a more dynamic and visually engaging experience compared to Tetris. While Tetris is a timeless puzzle game focused on logic and spatial reasoning, Warrior Runner features action-packed gameplay with animated characters, enemy interactions, and real-time controls. It allows players to actively control a character, making it feel more immersive. For game developers, Warrior Runner is a better learning tool as it involves working with animations, collisions, sound, and modular code — offering more creative possibilities and expansion potential than the simpler mechanics of Tetris.
 
-### Key Challenges in Warrior Runner : 
+### *Key Challenges in Warrior Runner* : 
 
-1. *Increasing Speed Over Time
+1. *Increasing Speed Over Time*
  - The game's speed ramps up as the player survives longer, reducing reaction time and increasing difficulty progressively.
 
-2. *Obstacle Timing & Coordination
+2. *Obstacle Timing & Coordination*
   - Players must jump or avoid obstacles (like cacti or other objects) with precise timing. Missteps mean immediate failure.
 
-3. *Limited Player Control
+3. *Limited Player Control*
   - With only basic inputs (jump/run), the game tests reflexes and not strategy. It's a pure test of timing and focus.
 
-4. *No Power-ups or Saves
+4. *No Power-ups or Saves*
   - There are no boosters, lives, or checkpoints. One mistake means restarting, adding pressure and tension.
 
-5. *Endless Nature
+5. *Endless Nature*
   - The game has no defined end. It's all about survival time and high score, pushing players into a loop of self-competition.
 
-6. *Minimal Visual Cues
+6. *Minimal Visual Cues*
   - Inspired by the minimalistic T-Rex aesthetic, this design means you rely entirely on twitch reflexes—no fancy HUDs or warnings.
 
 //overall line remaining
 
-# (emoji) Warrior-Runner Game in C++ - Terminal Based
+# (emoji) *Warrior-Runner Game in Python - Terminal Based*
 
 Welcome to the Warrior Runner Game in Python (Pygame). 
 
@@ -50,17 +50,17 @@ This document provides a comprehensive overview of the entire project, including
 
 ___
 
-## 🔖 Metadata and Project Overview
+## 🔖 *Metadata and Project Overview*
 
 ___
 
-## 🎯 Game Objective
+## 🎯 *Game Objective*
 
 The game Warrior-Runner is an endless running game inspired by Google's Chrome T-Rex game. In this game, players control a character that continuously runs forward, and the objective is to avoid obstacles for as long as possible to achieve a high score. The game is implemented in Python and is available on GitHub
 
 ___
 
-## 📁 Folder and File Structure
+## 📁 *Folder and File Structure*
 
 ```bash
 warrior-runner/
@@ -79,9 +79,9 @@ warrior-runner/
     └── utils.py         # Helper functions
 ```
 ___
-## Flowchart
+## *Flowchart*
 
-## 💡 Game Features
+## 💡*Game Features*
 
 | Feature             | Description                                                        |
 |--------------------|--------------------------------------------------------------------|
@@ -97,7 +97,7 @@ ___
 
 
 ___
-## 🎮 Game Controls
+## 🎮 *Game Controls*
 
 | Key         | Action                     |
 |-------------|----------------------------|
@@ -108,16 +108,106 @@ ___
 | ⁠ Esc ⁠       | Quit Game                 |
 
 ___
-## 🛠️ Code Architecture
+## 🛠️*Code Architecture*
 
-### Core Data Members
+The game is encapsulated within a class named ⁠ Game ⁠, which includes both the game state and its operations. It manages the main game loop, event handling, rendering, and updates for all components such as the player, obstacles, and power-ups. The architecture is modular, with dedicated managers for obstacles and power-ups, ensuring scalability and maintainability.
 
-### Core Functions
+### *Core Data Members*
 
+•⁠  ⁠⁠ Warrior player ⁠ – Represents the main character of the game with attributes like position and type.
+•⁠  ⁠⁠ ObstacleManager obstacle_manager ⁠ – Manages obstacles, including their creation, updates, and collisions.
+•⁠  ⁠⁠ PowerUpManager power_up_manager ⁠ – Handles power-ups, their spawning, activation, and duration.
+•⁠  ⁠⁠ int lives_left ⁠ – Tracks the number of lives the player has left (starts at 3).
+•⁠  ⁠⁠ int score ⁠ – Keeps track of the current score during gameplay.
+•⁠  ⁠⁠ int best_score ⁠ – Stores the highest score achieved across all game sessions.
+•⁠  ⁠⁠ float game_speed ⁠ – Determines the movement speed of objects, increases as score rises.
+•⁠  ⁠⁠ list heart_vec ⁠ – Stores the current heart images to visually represent lives on the screen.
+•⁠  ⁠⁠ list x_pos_bg ⁠ – X-axis positions for parallax background layers to create scrolling effects.
+•⁠  ⁠⁠ pygame.Surface screen ⁠ – Game window where all rendering is performed.
+
+### *Core Functions*
+
+| Function         | Purpose                                      |
+|------------------|----------------------------------------------|
+| ⁠ execute() ⁠      | Starts the main menu loop and initializes the game. |
+| ⁠ run() ⁠          | Begins the gameplay loop, handling events, updates, and rendering. |
+| ⁠ reset() ⁠        | Resets game variables like lives, score, and speed. |
+| ⁠ events() ⁠       | Processes user inputs and system events (e.g., quit). |
+| ⁠ update() ⁠       | Updates the state of the player, obstacles, power-ups, and score. |
+| ⁠ update_score() ⁠ | Increments the score and adjusts game speed at milestones. |
+| ⁠ update_heart() ⁠ | Updates the visual representation of lives left. |
+| ⁠ draw_text() ⁠    | Renders text on the screen at specified positions. |
+| ⁠ draw_score() ⁠   | Displays the current score with a shadow effect. |
+| ⁠ draw_hearts_left() ⁠ | Draws heart icons to represent remaining lives. |
+| ⁠ draw_power_up_time() ⁠ | Displays the remaining duration of active power-ups. |
+| ⁠ draw() ⁠         | Handles rendering of all game elements (background, player, obstacles, etc.). |
+| ⁠ parallax() ⁠     | Implements parallax scrolling for multi-layered backgrounds. |
+| ⁠ show_menu() ⁠    | Displays the start or game-over menu based on game state. |
+| ⁠ handle_events_on_menu() ⁠ | Processes menu-specific events like starting or quitting the game. |
+
+This table outlines the core functions that drive the Warrior Runner game’s mechanics and visuals. Let me know if you need further elaboration or additional sections!
+
+___
+## *Data Structures used in Project*
+
+The game utilizes several fundamental data structures to manage game objects, state, and rendering. Here's a breakdown:
+
+## *1. Lists (Arrays)*
+•⁠  ⁠*Primary Purpose*: Storing and managing multiple game objects
+•⁠  ⁠*Key Uses*:
+  - ⁠ self.heart_vec = [HEARTS[0]] * 3 ⁠ - Tracks lives (hearts) as a list of images
+  - ⁠ self.x_pos_bg = [0, 0, 0, 0, 0] ⁠ - Stores positions for parallax background layers
+  - Obstacle and power-up collections in ⁠ ObstacleManager ⁠ and ⁠ PowerUpManager ⁠ classes
+
+## *2. Dictionaries*
+•⁠  ⁠*Primary Purpose*: Mapping keys to values for efficient lookups
+•⁠  ⁠*Key Uses*:
+  - Image/sound resources (constants like ⁠ HEARTS ⁠, ⁠ SCORE ⁠, etc.)
+  - Power-up type mappings (likely used internally in ⁠ PowerUpManager ⁠)
+
+## *3. Classes (Custom Objects)*
+•⁠  ⁠*Primary Purpose*: Organizing game entities and logic
+•⁠  ⁠*Key Classes*:
+  - ⁠ Warrior ⁠ - Player character with state (position, power-ups, etc.)
+  - ⁠ ObstacleManager ⁠ - Handles obstacle spawning/updating using lists
+  - ⁠ PowerUpManager ⁠ - Manages power-up spawns and effects
+
+## *4. Queues (Conceptual)*
+•⁠  ⁠*Primary Purpose*: Managing object spawn timing
+•⁠  ⁠*Implementation*:
+  - Obstacles and power-ups spawn sequentially (though not a formal queue structure)
+  - Event timing uses ⁠ pygame.time.get_ticks() ⁠
+
+## *5. State Variables (Primitives)*
+•⁠  ⁠*Primary Purpose*: Tracking game conditions
+•⁠  ⁠*Examples*:
+  - ⁠ self.score ⁠ (integer)
+  - ⁠ self.game_speed ⁠ (integer)
+  - ⁠ self.playing ⁠ (boolean)
+
+## *Why These Structures?*
+•⁠  ⁠*Lists*: Ideal for dynamic collections needing frequent iteration (e.g., drawing all obstacles)
+•⁠  ⁠*Dictionaries*: Efficient lookups for resources/configuration
+•⁠  ⁠*Classes*: Encapsulation of game object logic (player, enemies, etc.)
+•⁠  ⁠*No complex structures needed*: The game's simplicity avoids trees/graphs
+
+The design focuses on *O(1) access* for critical operations (e.g., player input) and *O(n) iteration* for rendering/updating objects—a optimal tradeoff for a 2D runner.
 
 ---
 ## **Description of some functions used in the game**
 
+#### ⁠ def update_score(self) ⁠
+•⁠  ⁠*Purpose*: Tracks and updates the player’s score during gameplay.
+•⁠  ⁠*Functionality*: 
+  - Increases the score by 1 each frame (or tick).
+  - Increments the game speed by 2 every time the score is a multiple of 100, progressively increasing difficulty.
+•⁠  ⁠*Use*: Ensures the player’s progress is reflected and adjusts the challenge dynamically.
+  ```python
+  def update_score(self):
+      self.score += 1
+      if self.score % 100 == 0:
+          self.game_speed += 2
+```
 
 ---
 
