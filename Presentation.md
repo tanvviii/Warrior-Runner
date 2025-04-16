@@ -237,10 +237,19 @@ The game utilizes several fundamental data structures to manage game objects, st
   - ⁠ self.playing ⁠ (boolean)
 
 ## *Why These Structures?*
-•⁠-  *⁠*Lists*: Ideal for dynamic collections needing frequent iteration (e.g., drawing all obstacles)
-•⁠-  ⁠**Dictionaries*: Efficient lookups for resources/configuration
-•⁠-  *⁠*Classes*: Encapsulation of game object logic (player, enemies, etc.)
-•⁠-  *⁠*No complex structures needed*: The game's simplicity avoids trees/graphs
+
+- **Lists**  
+  Used for dynamic collections that need frequent iteration.  
+  *Example: storing and updating all active obstacles.*
+
+- **Dictionaries**  
+  Great for quick lookups, especially useful for managing assets, configurations, or power-up states.
+
+- **Classes**  
+  Enable clean encapsulation of logic and data for game elements like the player, obstacles, power-ups, and UI components.
+
+- **No Complex Structures Needed**  
+  Due to the game's straightforward mechanics, advanced structures like trees or graphs are unnecessary.
 
 The design focuses on *O(1) access* for critical operations (e.g., player input) and *O(n) iteration* for rendering/updating objects—a optimal tradeoff for a 2D runner.
 
