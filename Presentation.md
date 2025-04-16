@@ -139,10 +139,6 @@ ___
 |-------------|----------------------------|
 | ⁠ Arrow Up ⁠  | Jump                      |
 | ⁠ Arrow Down ⁠| Duck                      |
-| ⁠ Space ⁠     | Activate Power-Up         |
-| ⁠ P ⁠         | Pause/Resume Game         |
-| ⁠ Esc ⁠       | Quit Game                 |
-
 ___
 ## 🛠️*Code Architecture*
 
