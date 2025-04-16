@@ -258,6 +258,7 @@ The design focuses on *O(1) access* for critical operations (e.g., player input)
 
 ### 🧩 Initial Game Grid
 
+The Warrior-Runner game is a side-scrolling endless runner, not based on a grid system. Instead, it uses pixel-based coordinates to manage player and obstacle positions on a continuous horizontal plane. Screen dimensions define the playable area, and all movement is smooth and continuous, not tile-based.
 
 ---
 
