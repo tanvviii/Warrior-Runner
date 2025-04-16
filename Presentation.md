@@ -63,7 +63,7 @@ ___
 
 //overall line remaining
 
-# (emoji) *Warrior-Runner Game in Python - Terminal Based*
+# 🏃‍♂️‍➡️ *Warrior-Runner Game in Python - Terminal Based*
 
 Welcome to the Warrior Runner Game in Python (Pygame). 
 
