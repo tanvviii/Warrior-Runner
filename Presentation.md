@@ -257,7 +257,8 @@ The design focuses on *O(1) access* for critical operations (e.g., player input)
 
 ## 📊 Sample Gameplay Screenshots
 
-![Game Screenshot](assets/screenshot.jpg)
+![Game Screenshot](https://github.com/tanvviii/Warrior-Runner/blob/main/screenshot.jpg)
+![Game Video](https://github.com/tanvviii/Warrior-Runner/blob/main/video.mp4)
 
 
 ### 🧩 Initial Game Grid
