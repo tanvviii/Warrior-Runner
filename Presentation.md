@@ -58,13 +58,10 @@ ___
 3. *Limited Player Control*
   - With only basic inputs (jump/run), the game tests reflexes and not strategy. It's a pure test of timing and focus.
 
-4. *No Power-ups or Saves*
-  - There are no boosters, lives, or checkpoints. One mistake means restarting, adding pressure and tension.
-
-5. *Endless Nature*
+4. *Endless Nature*
   - The game has no defined end. It's all about survival time and high score, pushing players into a loop of self-competition.
 
-6. *Minimal Visual Cues*
+5. *Minimal Visual Cues*
   - Inspired by the minimalistic T-Rex aesthetic, this design means you rely entirely on twitch reflexes—no fancy HUDs or warnings.
 
 //overall line remaining
