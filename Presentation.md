@@ -31,7 +31,6 @@ Based on the GitHub repository shared (Warrior-Runner), here’s how things appe
 •⁠  ⁠Menu state.
 •⁠  ⁠Playing state.
 •⁠  ⁠Game over state.
-•⁠  ⁠Pause state.
 
 #### *Movement System*
 •⁠  ⁠Player movement (running forward automatically).
