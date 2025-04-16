@@ -116,7 +116,6 @@ warrior-runner/
     └── utils.py         # Helper functions
 ```
 ___
-## *Flowchart*
 
 ## 💡*Game Features*
 
