@@ -283,26 +283,11 @@ Execute the main Python script to start the game:
 
 ## 🧠 Learning Outcomes
 
-
----
-
-## 📖 License
-
-
----
-
-## 🧑‍💻 Contribution Guide
-
-
----
-
-## ✍️ Acknowledgments
-
-
----
-
-## 📌 Summary
-
+OOP in Games – Use of inheritance, encapsulation, and polymorphism to structure characters and obstacles.
+Game Loop & Events – Understand how real-time input and updates drive the game.
+Collision & Obstacle Handling – Implement obstacle generation, movement, and collision detection.
+Sprite Animation – Use frame-based animations for characters and enemies.
+Project Structure – Explore real-world project organization and GitHub collaboration.
 
 ---
 ## *Future Work Suggestions for Warrior-Runner*
