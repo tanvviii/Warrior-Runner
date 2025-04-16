@@ -148,18 +148,33 @@ ___
 
 The game is encapsulated within a class named ⁠ Game ⁠, which includes both the game state and its operations. It manages the main game loop, event handling, rendering, and updates for all components such as the player, obstacles, and power-ups. The architecture is modular, with dedicated managers for obstacles and power-ups, ensuring scalability and maintainability.
 
-### *Core Data Members*
+###  Warrior Player
+- **`Warrior player`** – Represents the main character with attributes like position and type.
 
-•⁠  ⁠⁠ Warrior player ⁠ – Represents the main character of the game with attributes like position and type.
-•⁠  ⁠⁠ ObstacleManager obstacle_manager ⁠ – Manages obstacles, including their creation, updates, and collisions.
-•⁠  ⁠⁠ PowerUpManager power_up_manager ⁠ – Handles power-ups, their spawning, activation, and duration.
-•⁠  ⁠⁠ int lives_left ⁠ – Tracks the number of lives the player has left (starts at 3).
-•⁠  ⁠⁠ int score ⁠ – Keeps track of the current score during gameplay.
-•⁠  ⁠⁠ int best_score ⁠ – Stores the highest score achieved across all game sessions.
-•⁠  ⁠⁠ float game_speed ⁠ – Determines the movement speed of objects, increases as score rises.
-•⁠  ⁠⁠ list heart_vec ⁠ – Stores the current heart images to visually represent lives on the screen.
-•⁠  ⁠⁠ list x_pos_bg ⁠ – X-axis positions for parallax background layers to create scrolling effects.
-•⁠  ⁠⁠ pygame.Surface screen ⁠ – Game window where all rendering is performed.
+###  Obstacle Management
+- **`ObstacleManager obstacle_manager`** – Controls obstacle creation, updates, and collision detection.
+
+###  Power-Up Management
+- **`PowerUpManager power_up_manager`** – Manages power-up spawning, activation, and expiration.
+
+###  Life Tracking
+- **`int lives_left`** – Tracks how many lives the player has (starts at 3).
+- **`list heart_vec`** – Holds heart images to display lives visually on the screen.
+
+###  Scoring
+- **`int score`** – The current score of the player in a session.
+- **`int best_score`** – Highest score achieved across all sessions.
+
+###  Gameplay Dynamics
+- **`float game_speed`** – Controls object movement speed; increases as the score rises.
+
+###  Background & Display
+- **`list x_pos_bg`** – X-axis positions for parallax scrolling backgrounds.
+- **`pygame.Surface screen`** – The game window where all elements are rendered.
+
+---
+
+These variables are central to game flow, and are updated dynamically during gameplay to manage challenge, feedback, and visuals.
 
 ### *Core Functions*
 
