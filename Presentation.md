@@ -237,55 +237,6 @@ The game utilizes several fundamental data structures to manage game objects, st
 The design focuses on *O(1) access* for critical operations (e.g., player input) and *O(n) iteration* for rendering/updating objects—a optimal tradeoff for a 2D runner.
 
 ---
-## **Description of some functions used in the game**
-
-The `Obstacle` class represents obstacles that the player's character must avoid or jump over in the game. These could be things like rocks, pits, or other barriers.
-
-### Role and Functionality:
-
-1. **Inheritance**: 
-   - The class inherits from `pygame.sprite.Sprite`, which provides basic sprite functionality.
-
-2. **Initialization (`__init__`)**:
-   - Takes an image (likely a sprite sheet or animation sequence) and a type (to select which frame/variant to use)
-   - Sets up the obstacle's visual representation (`self.image`), position (`self.rect`), and collision mask (`self.mask`)
-   - Positions the obstacle just off the right side of the screen (`SCREEN_WIDTH`)
-
-3. **Update Method**:
-   - Moves the obstacle leftward across the screen at the game's speed (`self.rect.x -= game_speed`)
-   - Removes the obstacle from the obstacles list when it moves completely off the left side of the screen
-   - This creates the illusion of the player character running past stationary obstacles
-
-4. **Draw Method**:
-   - Renders the obstacle on the screen at its current position
-
-### How It Fits in the Game:
-- This class would be used to create and manage all obstacles in your endless runner game
-- Multiple instances would be created at intervals to challenge the player
-- The game would check for collisions between the player character and these obstacles
-- The leftward movement creates the endless runner effect where obstacles approach the player
-
-### Key Features:
-- Uses Pygame's sprite system for efficient rendering and collision detection
-- Includes a mask for pixel-perfect collision detection (important for irregularly shaped obstacles)
-- Automatically cleans up obstacles that have moved off-screen
-- Supports different obstacle types/variants through the `type` parameter
-
-  
-#### ⁠ def update_score(self) ⁠
-•⁠  ⁠*Purpose*: Tracks and updates the player’s score during gameplay.
-•⁠  ⁠*Functionality*: 
-  - Increases the score by 1 each frame (or tick).
-  - Increments the game speed by 2 every time the score is a multiple of 100, progressively increasing difficulty.
-•⁠  ⁠*Use*: Ensures the player’s progress is reflected and adjusts the challenge dynamically.
-  ```python
-  def update_score(self):
-      self.score += 1
-      if self.score % 100 == 0:
-          self.game_speed += 2
-```
-
----
 
 ## 📊 Sample Gameplay Screenshots
 
