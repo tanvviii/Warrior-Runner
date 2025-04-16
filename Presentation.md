@@ -61,9 +61,6 @@ ___
 4. *Endless Nature*
   - The game has no defined end. It's all about survival time and high score, pushing players into a loop of self-competition.
 
-5. *Minimal Visual Cues*
-  - Inspired by the minimalistic T-Rex aesthetic, this design means you rely entirely on twitch reflexes—no fancy HUDs or warnings.
-
 //overall line remaining
 
 # (emoji) *Warrior-Runner Game in Python - Terminal Based*
