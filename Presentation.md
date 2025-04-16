@@ -39,7 +39,6 @@ Based on the GitHub repository shared (Warrior-Runner), here’s how things appe
 
 #### *Scoring/Progress*
 •⁠  ⁠Distance-based scoring.
-•⁠  ⁠Possibly coin/collectible system.
 
 #### *Object Pooling*
 •⁠  ⁠For efficient obstacle/enemy generation and recycling.
@@ -60,7 +59,6 @@ ___
 4. *Endless Nature*
   - The game has no defined end. It's all about survival time and high score, pushing players into a loop of self-competition.
 
-//overall line remaining
 
 # 🏃‍♂️‍➡️ *Warrior-Runner Game in Python - Terminal Based*
 
@@ -83,10 +81,6 @@ This document provides a comprehensive overview of the entire project, including
 ⚙️ How to Run and Play
 
 📚 Educational Insights and Learning Outcomes
-
-___
-
-## 🔖 *Metadata and Project Overview*
 
 ___
 
