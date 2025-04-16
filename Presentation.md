@@ -266,18 +266,18 @@ The design focuses on *O(1) access* for critical operations (e.g., player input)
 ### Requirements
 Open your terminal or command prompt and run:
 
-git clone https://github.com/AnxeLOo/Warrior-Runner.git
-cd Warrior-Runner&#8203;:contentReference[oaicite:6]{index=6}
+*git clone https://github.com/tanvviii/Warrior-Runner.git*
+*cd Warrior-Runner&*
 
 ### Compile
 Install the required Python packages using pip:
 
-pip install -r requirements.txt
+*pip install -r requirements.txt*
 
 ### Run
 Execute the main Python script to start the game:
 
-python main.py
+*python main.py*
 
 ---
 
